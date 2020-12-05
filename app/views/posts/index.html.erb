@@ -7,5 +7,6 @@
   </small>
   <h4><%= link_to p.title, post_path(p) %></h4>
   <p><%= p.body %></p>
+  <small>autor: <%=p.user.name %></small>
   <hr>
 <% end %>

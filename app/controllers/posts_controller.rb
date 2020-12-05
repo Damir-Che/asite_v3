@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = 'Статья создана!'
       redirect_to @post
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body )
+    params.require(:post).permit(:title, :body, :user_id )
   end
 
   def set_post
