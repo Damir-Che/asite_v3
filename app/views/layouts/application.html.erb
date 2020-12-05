@@ -13,6 +13,10 @@
     <%= link_to 'Главное', posts_path %>
     <%= link_to 'Новый пост', new_post_path %>
 
+    <!--flash-->
+    <p class="flash_error"><%= flash[:error] %></p>
+    <p class="flash_success"><%= flash[:success] %></p>
+
     <%= yield %>
   </body>
 </html>

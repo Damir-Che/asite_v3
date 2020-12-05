@@ -17,8 +17,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
+      flash[:success] = 'Статья создана!'
       redirect_to @post
     else
+      flash.now[:error] = 'Ошибка!'
       render 'post/new'
     end
   end
@@ -29,14 +31,17 @@ class PostsController < ApplicationController
   def update
     @post.update(post_params)
     if @post.save
+      flash[:success] = 'Статья обновлена!'
       redirect_to @post
     else
+      flash.now[:error] = 'Ошибка!'
       render 'post/edit'
     end
   end
 
   def destroy
     @post.destroy
+    flash[:success] = 'Статья удалена!'
     redirect_to posts_path
   end
 
