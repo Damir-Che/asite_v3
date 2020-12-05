@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash.now[:error] = 'Ошибка!'
-      render 'post/new'
+      render 'posts/new'
     end
   end
 
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash.now[:error] = 'Ошибка!'
-      render 'post/edit'
+      render 'posts/edit'
     end
   end
 
