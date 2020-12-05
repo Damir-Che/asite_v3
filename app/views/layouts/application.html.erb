@@ -12,6 +12,16 @@
   <body>
     <%= link_to 'Главное', posts_path %>
     <%= link_to 'Новый пост', new_post_path %>
+    <!-- device-->
+    <% if user_signed_in? %>
+      <%= link_to '| Выйти', destroy_user_session_path, :method => :delete %>
+      <%= current_user.email %>
+    <% else %>
+      <%= link_to ' | Войти', new_user_session_path, class: 'mr-4 all_posts' %>
+      <%= link_to 'Зарегистрироваться', new_user_registration_path, class: 'all_posts mr-2'%>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <!--flash-->
     <p class="flash_error"><%= flash[:error] %></p>
