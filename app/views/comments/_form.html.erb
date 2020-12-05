@@ -1,0 +1,7 @@
+<%= form_for ([@post, @post.comments.build]) do |f| %> <!--[Post.find(params[:id]), Post.commetns.new]) -->
+
+  <div>
+    <%= f.text_area :body, cols: 10, rows: 1  %>
+    <%= f.submit 'Сохранить' %>
+  </div>
+<%end %>

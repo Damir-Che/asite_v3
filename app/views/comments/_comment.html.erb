@@ -1,0 +1,9 @@
+<% if comment.body? %>
+  <div>
+    <p>User: <%= comment.user.name %></p>
+    <p>Body: <%= comment.body %></p>
+    <small><%= comment.created_at %></small>
+    <hr>
+  </div>
+
+<%end %>

@@ -7,6 +7,7 @@
   </small>
   <h4><%= link_to p.title, post_path(p) %></h4>
   <p><%= p.body %></p>
+  <p><%= link_to'Комментарии ', post_path(p) %><%= p.comments.count %></p>
   <small>autor: <%=p.user.name %></small>
   <hr>
 <% end %>
