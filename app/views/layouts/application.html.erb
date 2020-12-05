@@ -15,7 +15,7 @@
     <!-- device-->
     <% if user_signed_in? %>
       <%= link_to '| Выйти', destroy_user_session_path, :method => :delete %>
-      <%= current_user.email %>
+      <%= current_user.name %>
     <% else %>
       <%= link_to ' | Войти', new_user_session_path, class: 'mr-4 all_posts' %>
       <%= link_to 'Зарегистрироваться', new_user_registration_path, class: 'all_posts mr-2'%>
