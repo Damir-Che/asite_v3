@@ -1,6 +1,9 @@
 <h1>show-post</h1>
 <small> id: <%= @post.id %></small>
 <h4><%= @post.title %></h4>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image.variant(resize: "100x100") %>
+<% end %>
 <p><%= @post.body %></p>
 <hr>
 
