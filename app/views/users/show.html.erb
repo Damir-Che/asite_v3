@@ -1,0 +1,16 @@
+<h1>show-User</h1>
+
+<%= image_tag user_avatar(current_user, 200) %>
+<p> Name: <%= @user.name %></p>
+<p> Email: <%= @user.email %></p>
+<br>
+<br>
+<h5>Мой посты: <%= @user.posts.count %></h5>
+<% @user.posts.each do |p| %>
+  <p>title: <%= link_to p.title, post_path(p) %></p>
+  <% if p.image.attached? %>
+    <%= image_tag p.image.variant(resize: "100x100") %>
+  <% end %>
+  <p>boby: <%= p.body %></p>
+  <hr>
+<% end %>
