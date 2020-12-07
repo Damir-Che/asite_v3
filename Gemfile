@@ -21,6 +21,7 @@ gem 'activeadmin'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'bootstrap', '~> 5.0.0.alpha1'
 gem 'jquery-rails'
+gem 'gravatar_image_tag', '~> 1.2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

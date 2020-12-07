@@ -12,20 +12,20 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img style="width: 45px; height: 40px;" src="https://sun9-31.userapi.com/impg/566MDciqI_51fihWkBtg1YQvC6a1xGf21Tc2Ng/HYJ4oocjRfY.jpg?size=368x348&quality=96&proxy=1&sign=f9f9ebbce581692c86c2ccb3a3664999&type=album" alt="">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+      <ul class="navbar-nav mr-auto mt-2">
+        <li class="nav-item active ">
           <%= link_to 'Главное', posts_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <%= link_to 'Новый пост', new_post_path, class: 'nav-link' %>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,16 +35,17 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+
        <li class=" ">
-         <% if user_signed_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item ">
             <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <p class="nav-link"><%= current_user.name %></p>
+            <p class="nav-link disabled "><%= current_user.name %> </p>
+          </li>
+          <li class="nav-item ">
+            <%= image_tag user_avatar(current_user, 30), class: 'rounded-circle  nav-link' %>
           </li>
         <% else %>
           <li class="nav-item">
