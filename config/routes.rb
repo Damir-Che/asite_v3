@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :likes, only: :create
   end
   resources :users, only: :show
+  get 'search', to:'posts#search'
 end
