@@ -12,5 +12,6 @@
     <%= image_tag p.image.variant(resize: "100x100") %>
   <% end %>
   <p>boby: <%= p.body %></p>
+  <small>autor: <%=link_to p.user.name, user_path(id: p.user.id) %></small>
   <hr>
 <% end %>

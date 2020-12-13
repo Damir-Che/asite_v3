@@ -13,7 +13,6 @@
   <p><%= p.body %></p>
   <p><%= link_to'Комментарии ', post_path(p) %><%= p.comments.count %></p>
   <p><%= link_to 'Like', post_likes_path(p), method: :post, class: 'like', id: 'like' %><%=  p.likes.count %></p>
-
-  <small>autor: <%=p.user.name %></small>
+  <small>autor: <%=link_to p.user.name, user_path(id: p.user.id) %></small>
   <hr>
 <% end %>
