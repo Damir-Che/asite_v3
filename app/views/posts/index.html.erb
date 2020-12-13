@@ -1,10 +1,19 @@
 <h1>index-post</h1>
+<%#= puts "--------------#{p.title}" %>
+
+<div class="d-flex "> <!-- для вывода всех тегов -->
+  <p>Tags: <% Post.pluck(:tag).uniq.each do |t|  %></p>
+      <p class="pl-1"><%= link_to t, tag_path(tag: t)  %></p>
+  <% end %>
+</div>
+
 <% @posts.each do |p| %>
   <small>
     id: <%= p.id %>
     <%= link_to 'Изменить', edit_post_path(p)  %>
     <%= link_to 'Удалить', post_path(p), method: :delete %>
   </small>
+  <p>Tag: <%= link_to p.tag, tag_path(tag: p.tag) %></p>
   <h4><%= link_to p.title, post_path(p) %></h4>
   <% if p.image.attached? %>
     <%= image_tag p.image.variant(resize: "100x100") %>
@@ -12,7 +21,6 @@
   <p><%= p.body %></p>
   <p><%= link_to'Комментарии ', post_path(p) %><%= p.comments.count %></p>
   <p><%= link_to 'Like', post_likes_path(p), method: :post, class: 'like', id: 'like' %><%=  p.likes.count %></p>
-
   <small>autor: <%=p.user.name %></small>
   <hr>
 <% end %>

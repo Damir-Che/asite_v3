@@ -5,7 +5,11 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    if params[:tag]
+      @posts = Post.where(tag: params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -50,10 +54,11 @@ class PostsController < ApplicationController
     @posts = Post.where("title LIKE ?", "%" + params[:q] + "%")
   end
 
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :image )
+    params.require(:post).permit(:title, :body, :user_id, :image, :tag )
   end
 
   def set_post

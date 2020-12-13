@@ -1,5 +1,6 @@
 <h1>show-post</h1>
 <small> id: <%= @post.id %></small>
+<p>Tag: <%= link_to @post.tag, tag_path(tag: @post.tag) %></p>
 <h4><%= @post.title %></h4>
 <% if @post.image.attached? %>
   <%= image_tag @post.image.variant(resize: "100x100") %>
