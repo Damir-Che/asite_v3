@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
+    Notification.create(user_id:current_user.id, text:'comment')#для создания уведомления
+
     redirect_to post_path(@post)
   end
 

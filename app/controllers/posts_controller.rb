@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = 'Статья создана!'
+      Notification.create(user_id:current_user.id, text:'post') #для создания уведомления
       redirect_to @post
     else
       flash.now[:error] = 'Ошибка!'
@@ -57,9 +58,11 @@ class PostsController < ApplicationController
 
   private
 
+
   def post_params
     params.require(:post).permit(:title, :body, :user_id, :image, :tag )
   end
+
 
   def set_post
     @post = Post.find(params[:id])

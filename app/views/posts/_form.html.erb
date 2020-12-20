@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for @post do |f| %> <!--, remote: true - ajax запрос. Позволяет не перезагружать страницу при отправке формы -->
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title %>

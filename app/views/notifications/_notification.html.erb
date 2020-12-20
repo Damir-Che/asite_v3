@@ -1,0 +1,24 @@
+
+<div class="dropdown pt-2 pl-4">
+    <%= link_to  do %>
+      <a class="" href=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Уведомление
+        <%= current_user.notifications.count %>
+      </a>
+<% end %>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+    <% current_user.notifications.each do |n| %>
+      <ul class="notification_list" data-id="<%=n.id %>">
+        <li><%= n.id %></li>
+        <li class="deleteAction"> <%=n.text %></li>
+        <hr>
+      </ul>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+

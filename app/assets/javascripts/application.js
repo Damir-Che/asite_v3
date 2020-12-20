@@ -17,3 +17,24 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+
+$(document).ready(function () {
+    $('.deleteAction').click(function () {
+        let current_notification =$(this).parents('.notification_list')[0];
+        $.ajax({
+            url: '/notifications/'+ $(current_notification).attr('data-id'),
+            type: 'DELETE',
+            success: function (result) {
+                $(current_notification).fadeOut(100);
+                console.log(result)
+
+            }
+
+        })
+
+    })
+
+});
+
