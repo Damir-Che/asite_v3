@@ -3,7 +3,7 @@
     <%= link_to  do %>
       <a class="" href=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Уведомление
-        <%= current_user.notifications.count %>
+        <p class="not_count" ><%= current_user.notifications.count %></p>
       </a>
 <% end %>
 

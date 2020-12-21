@@ -23,18 +23,20 @@
 $(document).ready(function () {
     $('.deleteAction').click(function () {
         let current_notification =$(this).parents('.notification_list')[0];
+        let not_count = $('.not_count');
         $.ajax({
             url: '/notifications/'+ $(current_notification).attr('data-id'),
             type: 'DELETE',
             success: function (result) {
                 $(current_notification).fadeOut(100);
-                console.log(result)
-
+                not_count.html(result.count);
+                console.log(result.count);
+                console.log(result);
             }
-
         })
+    });
 
-    })
+
 
 });
 
