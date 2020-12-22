@@ -18,9 +18,11 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
+// /posts/:post_id/likes
 
 $(document).ready(function () {
+
+    //уведомление
     $('.deleteAction').click(function () {
         let current_notification =$(this).parents('.notification_list')[0];
         let not_count = $('.not_count');
@@ -32,6 +34,23 @@ $(document).ready(function () {
                 not_count.html(result.count);
                 console.log(result.count);
                 console.log(result);
+            }
+        })
+    });
+
+    //лайки
+    $('.like').click(function () {
+        let like_button = $(this).parents('.section')[0];
+        let like_count = $(this);
+        let not_count = $('.not_count');
+        $.ajax({
+            url: '/posts/' + $(like_button).attr('data-id') + '/likes',
+            type: 'POST',
+            success: function (result) {
+                like_count.html('like ' + result.count);
+                not_count.html(result.not_count)
+                console.log(result.count)
+                console.log(result.not_count)
             }
         })
     });

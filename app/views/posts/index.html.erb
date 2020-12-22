@@ -8,25 +8,33 @@
 </div>
 
 <% @posts.each do |p| %>
-  <small>
-    <%=p.id %>">
-    <%= link_to 'Изменить', edit_post_path(p)   %>
-    <%= link_to 'Удалить', post_path(p), method: :delete %>
-
-    <%#= link_to 'Удалить', post_path(p), {method: "delete", remote: true, data: {confirm: "Вы уверены?" }} %>
-    <%#= link_to task, remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
-<!--      <button>Delete!</button>-->
-    <%# end %>
-
-  </small>
-  <p>Tag: <%= link_to p.tag, tag_path(tag: p.tag) %></p>
-  <h4><%= link_to p.title, post_path(p) %></h4>
-  <% if p.image.attached? %>
-    <%= image_tag p.image.variant(resize: "100x100") %>
-  <% end %>
-  <p><%= p.body %></p>
-  <p><%= link_to'Комментарии ', post_path(p) %><%= p.comments.count %></p>
-  <p><%= link_to 'Like', post_likes_path(p), method: :post, class: 'like', id: 'like' %><%=  p.likes.count %></p>
-  <small>autor: <%= link_to p.user.name, user_path(id: p.user.id) %></small>
-  <hr>
+ <div class="section" data-id="<%=p.id %>>">
+   <small>
+     <%=p.id %>>
+     <%= link_to 'Изменить', edit_post_path(p)   %>
+     <%= link_to 'Удалить', post_path(p), method: :delete %>
+   </small>
+   <p>Tag: <%= link_to p.tag, tag_path(tag: p.tag) %></p>
+   <h4><%= link_to p.title, post_path(p) %></h4>
+   <% if p.image.attached? %>
+     <%= image_tag p.image.variant(resize: "100x100") %>
+   <% end %>
+   <p><%= p.body %></p>
+   <p><%= link_to'Комментарии ', post_path(p) %><%= p.comments.count %></p>
+   <p class="like">like <%= p.likes.count %></p>
+   <small>autor: <%= link_to p.user.name, user_path(id: p.user.id) %></small>
+   <hr>
+ </div>
 <% end %>
+
+
+
+
+
+
+
+
+<%#= link_to 'Удалить', post_path(p), {method: "delete", remote: true, data: {confirm: "Вы уверены?" }} %>
+<%#= link_to task, remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
+<!--      <button>Delete!</button>-->
+<%# end %>
