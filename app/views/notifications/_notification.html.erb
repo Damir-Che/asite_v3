@@ -3,7 +3,7 @@
     <%= link_to  do %>
       <a class="" href=""  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Уведомление
-        <p class="not_count" ><%= current_user.notifications.count %></p>
+        <p class="notification_count" ><%= current_user.notifications.count %></p>
       </a>
 <% end %>
 
@@ -11,7 +11,7 @@
     <% current_user.notifications.each do |n| %>
       <ul class="notification_list" data-id="<%=n.id %>">
         <li><%= n.id %></li>
-        <li class="deleteAction"> <%=n.text %></li>
+        <li class="title_notification"> <%=n.text %></li>
         <hr>
       </ul>
     <% end %>

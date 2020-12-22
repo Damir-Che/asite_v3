@@ -18,39 +18,34 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-// /posts/:post_id/likes
 
 $(document).ready(function () {
 
     //уведомление
-    $('.deleteAction').click(function () {
-        let current_notification =$(this).parents('.notification_list')[0];
-        let not_count = $('.not_count');
+    $('.title_notification').click(function () {
+        let current_notification =$(this).parents('.notification_list')[0]; //полуаем весь лок с уведомлением
+        let notification_count = $('.notification_count');                  // кол-во уведомлений
         $.ajax({
             url: '/notifications/'+ $(current_notification).attr('data-id'),
             type: 'DELETE',
             success: function (result) {
-                $(current_notification).fadeOut(100);
-                not_count.html(result.count);
-                console.log(result.count);
-                console.log(result);
+                $(current_notification).fadeOut(100);                       //плавное удаление уведомлении из списка
+                notification_count.html(result.count);                      //изменяем кол-во уведомление в отображении
             }
         })
     });
 
     //лайки
     $('.like').click(function () {
-        let like_button = $(this).parents('.section')[0];
-        let like_count = $(this);
-        let not_count = $('.not_count');
+        let like_button = $(this).parents('.section_post')[0];              //получаем блок с постом(1)
+        let like = $(this);                                                 //лайк на который кликнули
+        let notification_count = $('.notification_count');                  //кол-во уведомлений
         $.ajax({
             url: '/posts/' + $(like_button).attr('data-id') + '/likes',
             type: 'POST',
             success: function (result) {
-                like_count.html('like ' + result.count);
-                not_count.html(result.not_count)
-                console.log(result.count)
-                console.log(result.not_count)
+                like.html('like ' + result.like);                           //изменяет кол-во лайков в отображении
+                notification_count.html(result.notification);               //изменяет кол-во уведомлений в отображении
             }
         })
     });

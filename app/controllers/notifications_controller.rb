@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   def destroy
     @notification = Notification.find(params[:id])
     @notification.destroy
-    render json: { success: 'удаленно', count: current_user.notifications.count}
+    render json: { success: 'удаленно', count: current_user.notifications.count} #передает в jq(ajax) данные
   end
 
   private

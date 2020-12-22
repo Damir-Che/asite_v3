@@ -8,7 +8,7 @@
 </div>
 
 <% @posts.each do |p| %>
- <div class="section" data-id="<%=p.id %>>">
+ <div class="section_post" data-id="<%=p.id %>>">
    <small>
      <%=p.id %>>
      <%= link_to 'Изменить', edit_post_path(p)   %>

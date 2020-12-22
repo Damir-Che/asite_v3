@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = @post.likes.create(user_id: current_user.id, post_id: @post.id)
     Notification.create(user_id:current_user.id, text:'like') #для создания уведомления
-    render json: {not_count: current_user.notifications.count, count: @post.likes.count}
+    render json: {notification: current_user.notifications.count, like: @post.likes.count} #передает в jq(ajax) данные
   end
 
 end
